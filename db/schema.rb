@@ -11,31 +11,118 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151005065836) do
+ActiveRecord::Schema.define(version: 20151025060018) do
+
+  create_table "answers", force: :cascade do |t|
+    t.integer  "test_id",    limit: 4
+    t.integer  "kanji_id",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "answers", ["kanji_id"], name: "index_answers_on_kanji_id", using: :btree
+  add_index "answers", ["test_id"], name: "index_answers_on_test_id", using: :btree
 
   create_table "books", force: :cascade do |t|
-    t.string   "title"
-    t.integer  "number_of_pages"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "title",           limit: 255
+    t.integer  "number_of_pages", limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.string   "description", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "characters", force: :cascade do |t|
+    t.string   "text",       limit: 255
+    t.integer  "order",      limit: 4
+    t.integer  "kanji_id",   limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "characters", ["kanji_id"], name: "index_characters_on_kanji_id", using: :btree
+
+  create_table "goals", force: :cascade do |t|
+    t.integer  "goal",       limit: 4
+    t.datetime "deadline"
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "goals", ["user_id"], name: "index_goals_on_user_id", using: :btree
+
+  create_table "kanjis", force: :cascade do |t|
+    t.string   "text",       limit: 255
+    t.string   "mean",       limit: 255
+    t.string   "other_mean", limit: 255
+    t.string   "kun",        limit: 255
+    t.string   "on",         limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "results", force: :cascade do |t|
+    t.integer  "test_id",    limit: 4
+    t.integer  "order",      limit: 4
+    t.integer  "answer_id",  limit: 4
+    t.boolean  "correct",    limit: 1
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "results", ["answer_id"], name: "index_results_on_answer_id", using: :btree
+  add_index "results", ["test_id"], name: "index_results_on_test_id", using: :btree
+
+  create_table "tests", force: :cascade do |t|
+    t.integer  "word_id",    limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "tests", ["user_id"], name: "index_tests_on_user_id", using: :btree
+  add_index "tests", ["word_id"], name: "index_tests_on_word_id", using: :btree
+
+  create_table "user_logs", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.string   "content",    limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "words", force: :cascade do |t|
+    t.string   "text",        limit: 255
+    t.string   "mean",        limit: 255
+    t.string   "pronounce",   limit: 255
+    t.integer  "category_id", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "words", ["category_id"], name: "index_words_on_category_id", using: :btree
 
 end

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @kanji.text %>
+</p>
+
+<p>
+  <strong>Mean:</strong>
+  <%= @kanji.mean %>
+</p>
+
+<p>
+  <strong>Other mean:</strong>
+  <%= @kanji.other_mean %>
+</p>
+
+<p>
+  <strong>Kun:</strong>
+  <%= @kanji.kun %>
+</p>
+
+<p>
+  <strong>On:</strong>
+  <%= @kanji.on %>
+</p>
+
+<%= link_to 'Edit', edit_kanji_path(@kanji) %> |
+<%= link_to 'Back', kanjis_path %>

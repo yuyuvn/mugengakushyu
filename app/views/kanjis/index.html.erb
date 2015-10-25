@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Kanjis</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Text</th>
+      <th>Mean</th>
+      <th>Other mean</th>
+      <th>Kun</th>
+      <th>On</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @kanjis.each do |kanji| %>
+      <tr>
+        <td><%= kanji.text %></td>
+        <td><%= kanji.mean %></td>
+        <td><%= kanji.other_mean %></td>
+        <td><%= kanji.kun %></td>
+        <td><%= kanji.on %></td>
+        <td><%= link_to 'Show', kanji %></td>
+        <td><%= link_to 'Edit', edit_kanji_path(kanji) %></td>
+        <td><%= link_to 'Destroy', kanji, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Kanji', new_kanji_path %>
