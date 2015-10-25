@@ -125,4 +125,13 @@ ActiveRecord::Schema.define(version: 20151025060018) do
 
   add_index "words", ["category_id"], name: "index_words_on_category_id", using: :btree
 
+  add_foreign_key "answers", "kanjis"
+  add_foreign_key "answers", "tests"
+  add_foreign_key "characters", "kanjis"
+  add_foreign_key "goals", "users"
+  add_foreign_key "results", "answers"
+  add_foreign_key "results", "tests"
+  add_foreign_key "tests", "users"
+  add_foreign_key "tests", "words"
+  add_foreign_key "words", "categories"
 end
