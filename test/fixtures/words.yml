@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  text: MyString
+  mean: MyString
+  pronounce: MyString
+  category_id: 
+
+two:
+  text: MyString
+  mean: MyString
+  pronounce: MyString
+  category_id: 

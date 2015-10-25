@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  goal: 1
+  deadline: 2015-10-25 06:00:18
+  user_id: 
+
+two:
+  goal: 1
+  deadline: 2015-10-25 06:00:18
+  user_id: 

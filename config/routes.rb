@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  resources :goals
+  resources :results
+  resources :answers
+  resources :tests
+  resources :categories
+  resources :characters
+  resources :words
+  resources :kanjis
   root 'static_pages#home'
 
   devise_for :users
