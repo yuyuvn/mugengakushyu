@@ -1,10 +1,2 @@
 <h1>This is our home page</h1>
 <p>ホームページです</p>
-<% if user_signed_in? %>
-  <br></br>
-  <%= link_to "User goals", "goals#index"%>
-  <br></br>
-  <%= link_to "User edit", edit_user_registration_path%>
-  <br></br>
-  <%= link_to "Show all users",  users_path %>
-<% end %>

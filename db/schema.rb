@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102074317) do
+ActiveRecord::Schema.define(version: 20151025060018) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "test_id",    limit: 4
@@ -46,16 +46,6 @@ ActiveRecord::Schema.define(version: 20151102074317) do
   end
 
   add_index "characters", ["kanji_id"], name: "index_characters_on_kanji_id", using: :btree
-
-  create_table "friends", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.integer  "friend_id",  limit: 4
-    t.boolean  "accepted",   limit: 1
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-  end
-
-  add_index "friends", ["friend_id"], name: "index_friends_on_friend_id", using: :btree
 
   create_table "goals", force: :cascade do |t|
     t.integer  "goal",       limit: 4
@@ -119,9 +109,6 @@ ActiveRecord::Schema.define(version: 20151102074317) do
     t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
-    t.string   "name",                   limit: 255
-    t.string   "gender",                 limit: 255
-    t.integer  "age",                    limit: 4
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
