@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'friend/create'
+
   resources :goals
   resources :results
   resources :answers
@@ -10,7 +12,8 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   devise_for :users
-  resources :books
+  resources :users, only: [:show, :index]
+  resources :friends, only: [:create, :destroy, :update]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
