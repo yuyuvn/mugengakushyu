@@ -11,17 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :goal, "Number of words" %><br>
-    <%= f.number_field :goal %>
+    <%= f.number_field :goal ,class:"form-control"%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :deadline %><br>
-    <%= f.datetime_select :deadline %>
+    <%= f.datetime_select :deadline ,class:"form-control"%>
   </div>
 
   <%= f.hidden_field :user_id, value: current_user.id %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create Goal" ,class:"btn btn-default"%>
   </div>
 <% end %>

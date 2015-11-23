@@ -11,11 +11,11 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :word_id %><br>
-    <%= f.text_field :word_id %>
+    <%= f.text_field :word_id  ,class:"form-control"%>
   </div>
   <div class="actions">
-    <%= f.submit %>
+     <%= f.submit "Create Tests" ,class:"btn btn-default"%>
   </div>
 <% end %>

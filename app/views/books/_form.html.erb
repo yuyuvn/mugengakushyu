@@ -11,15 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title ,class:"form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :number_of_pages %><br>
-    <%= f.number_field :number_of_pages %>
+    <%= f.number_field :number_of_pages ,class:"form-control" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+     <%= f.submit "Create Books" ,class:"btn btn-default"%>
   </div>
 <% end %>

@@ -11,15 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name ,class:"form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.text_field :description ,class:"form-control" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+     <%= f.submit "Create Categories" ,class:"btn btn-default"%>
   </div>
 <% end %>

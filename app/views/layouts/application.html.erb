@@ -2,21 +2,25 @@
 <html>
 <head>
   <title>Workspace</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% if user_signed_in? %>
-    <h3>Hello, <%= current_user.email %>!</h3>
-    <%= link_to "ログアゥト", destroy_user_session_path, method: :delete %>
-  <% else %>
-    <%= link_to "サインイン", new_user_session_path %>
-    <%= link_to "ユーザー登録", new_user_registration_path %>
-  <% end %>
-  <hr>
-
-  <%= yield %>
-
+  <div class="container">
+    <br>
+    <div class="pull-right">
+      <% if user_signed_in? %>
+        <p>Hello, <%= current_user.email %>! <%= link_to "ログアゥト", destroy_user_session_path, method: :delete %></p>
+      <% else %>
+        <%= link_to "サインイン", new_user_session_path %>
+        <%= link_to "ユーザー登録", new_user_registration_path %>
+      <% end %>
+    </div>
+    <hr>
+  
+    <%= yield %>
+  </div>
 </body>
 </html>
