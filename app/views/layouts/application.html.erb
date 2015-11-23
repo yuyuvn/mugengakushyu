@@ -11,11 +11,19 @@
   <div class="container">
     <br>
     <div class="pull-right">
-      <% if user_signed_in? %>
-        <p>Hello, <%= current_user.email %>! <%= link_to "ログアゥト", destroy_user_session_path, method: :delete %></p>
+     
+        <% if user_signed_in? %>
+          <%= link_to "Categories",  categories_path  %>
+          <%= link_to "Tests",   tests_path %>
+          <%= link_to "Goals", goals_path %>
+          <%= link_to "User", users_path %>
+          <%= link_to "Profile", current_user %>
+          
+          <%= link_to "Edit", edit_user_registration_path %>
+          <%= link_to "Logout", destroy_user_session_path, method: "delete" %>
       <% else %>
-        <%= link_to "サインイン", new_user_session_path %>
-        <%= link_to "ユーザー登録", new_user_registration_path %>
+        <%= link_to "Signin", new_user_session_path %>
+        <%= link_to "Signup", new_user_registration_path %>
       <% end %>
     </div>
     <hr>
