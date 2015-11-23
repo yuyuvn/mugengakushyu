@@ -11,23 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :test_id %><br>
-    <%= f.text_field :test_id %>
+    <%= f.text_field :test_id ,class:"form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :order %><br>
-    <%= f.number_field :order %>
+    <%= f.number_field :order ,class:"form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :answer_id %><br>
-    <%= f.text_field :answer_id %>
+    <%= f.text_field :answer_id ,class:"form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :correct %><br>
-    <%= f.check_box :correct %>
+    <%= f.check_box :correct ,class:"form-control" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create Results" ,class:"btn btn-default"%>
   </div>
 <% end %>

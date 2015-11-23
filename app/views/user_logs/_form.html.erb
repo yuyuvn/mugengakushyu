@@ -11,15 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
+    <%= f.number_field :user_id ,class:"form-control"%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :content %><br>
-    <%= f.text_field :content %>
+    <%= f.text_field :content ,class:"form-control"%>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create Logs" ,class:"btn btn-default"%>
   </div>
 <% end %>

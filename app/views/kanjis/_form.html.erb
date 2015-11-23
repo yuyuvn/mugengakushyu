@@ -11,27 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :text %><br>
-    <%= f.text_field :text %>
+    <%= f.text_field :text ,class:"form-control"%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :mean %><br>
-    <%= f.text_field :mean %>
+    <%= f.text_field :mean ,class:"form-control"%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :other_mean %><br>
-    <%= f.text_field :other_mean %>
+    <%= f.text_field :other_mean ,class:"form-control"%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :kun %><br>
-    <%= f.text_field :kun %>
+    <%= f.text_field :kun ,class:"form-control"%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :on %><br>
-    <%= f.text_field :on %>
+    <%= f.text_field :on ,class:"form-control"%>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create Kanjis" ,class:"btn btn-default"%>
   </div>
 <% end %>

@@ -11,15 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :test_id %><br>
-    <%= f.text_field :test_id %>
+    <%= f.text_field :test_id ,class:"form-control"%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :kanji_id %><br>
-    <%= f.text_field :kanji_id %>
+    <%= f.text_field :kanji_id ,class:"form-control"%>
   </div>
   <div class="actions">
-    <%= f.submit %>
+   <%= f.submit "Create Anwers" ,class:"btn btn-default"%>
   </div>
 <% end %>

@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :text %><br>
-    <%= f.text_field :text %>
+    <%= f.text_field :text ,class:"form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :order %><br>
-    <%= f.number_field :order %>
+    <%= f.number_field :order ,class:"form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :kanji_id %><br>
-    <%= f.text_field :kanji_id %>
+    <%= f.text_field :kanji_id ,class:"form-control" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create Characters" ,class:"btn btn-default"%>
   </div>
 <% end %>
