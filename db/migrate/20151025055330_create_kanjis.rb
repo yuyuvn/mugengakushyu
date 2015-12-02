@@ -6,6 +6,7 @@ class CreateKanjis < ActiveRecord::Migration
       t.string :other_mean
       t.string :kun
       t.string :on
+      t.references :category, index: true, foreign_key: true
 
       t.timestamps null: false
     end
