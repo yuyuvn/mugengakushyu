@@ -1,6 +1,6 @@
-jQuery(document).ready(function($){
-    
-    historys = [];
+$(document).on("page:change", function() {
+  // code
+  historys = [];
     current_position = 0;
     
     function checkCompleted(){
@@ -135,4 +135,3 @@ jQuery(document).ready(function($){
     $('body').on('click','.btn-next',hanldeNext);
     $('body').on('click','.btn-prev',hanldePrev);
 });
-
