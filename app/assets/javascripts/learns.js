@@ -17,7 +17,7 @@ jQuery(document).ready(function($){
                url:'/learns/check',
                type: 'POST',
                dataType: 'json',
-               data: {word_id:$('.info-word').attr('data-id'),answer:str_answer},
+               data: {word_id:$('.info-word').attr('data-id'),category_id:$('.info-word').attr('data-category-id'),answer:str_answer},
                success: function(data){
                  if(data.status==200){
                      
@@ -77,7 +77,7 @@ jQuery(document).ready(function($){
                url:'/learns/kanji',
                type: 'POST',
                dataType: 'json',
-               data: {kanji:$(this).find('.ch-info-front .kanji').html().trim()},
+               data: {kanji:$(this).find('.ch-info-front .kanji').html().trim(),category_id:$('.info-word').attr('data-category-id')},
                success: function(data){
                  if(data.status==200){
                    $('.info-kanji .text').html(data.info.text);
@@ -102,8 +102,9 @@ jQuery(document).ready(function($){
             }else{
                 $.ajax({
                        url:'/learns/questtion',
-                       type: 'GET',
+                       type: 'POST',
                        dataType: 'json',
+                       data: {category_id:$('.info-word').attr('data-category-id')},
                        success: function(data){
                          if(data.status==200){
                              $( ".content" ).replaceWith(data.html);

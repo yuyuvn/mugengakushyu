@@ -1,8 +1,28 @@
-<h1>Wellcome to the Kanji's World</h1>
-
 <% if user_signed_in? %>
-  
+  <div class="container">
+    <h2 class="title">Lựa chọn cấp độ từ mới</h2>
+    <div class="row">
+      <% @categories.each do |category| %>
+        <!--<a type="button" class="btn btn-success"><%= category.name %> <span class="badge">30.00%</span></a>   -->
+         <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-name bg-aqua"><%= category.name %></span>
+
+            <div class="info-box-content">
+              <a href="/learns/word/<%= category.name %>"><span class="info-box-text"><%= category.description %></span></a>
+              <span class="info-box-number"><%= category.percent %> %</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+      <% end %>
+    </div>
+  </div>
 <% else %>
+  <h1>Wellcome to the Kanji's World</h1>
   <div class="center jumbotron">
     <%= link_to "Sign up now!", new_user_registration_path,class: "btn btn-lg btn-primary" %>
     <%= link_to "Sign in", new_user_session_path,class: "btn btn-lg btn-primary" %>

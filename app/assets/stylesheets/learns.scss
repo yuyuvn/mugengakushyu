@@ -240,7 +240,6 @@ body > .container{
 	font-size:18px;
 }
 
-
 .collapse-meaning{
 	border-top: #e0e0e0 1px solid;
 	background-color: #FFF;
@@ -294,4 +293,14 @@ dl{
     top: 0px;
     margin-left: 120px;
     margin-top: 60px;
+}
+.info-percent .category{
+	text-transform:uppercase;
+}
+
+.info-percent .number{
+	font-weight: 600;
+}
+.info-percent .link{
+	margin-right:50px;
 }

@@ -12,10 +12,10 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index]
   resources :friends, only: [:create, :destroy, :update]
   scope "learns" ,:controller => :learns do
-    get 'word' => :word
+    get 'word/:category' => :word
     post 'check' => :check
     post 'kanji' => :kanji
-    get 'questtion' => :questtion
+    post 'questtion' => :questtion
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

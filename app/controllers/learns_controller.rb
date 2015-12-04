@@ -2,10 +2,17 @@ class LearnsController < ApplicationController
   before_action :logined
   
   def word
-    @word = Word.get_word_by_category(1)
-    @kanjis = Kanji.get_kanjis_by_category(1)
-    @percent = self.percent(1)
-    all_kanjis = Kanji.where(category_id: 1).pluck(:text)
+    @category =Category.find_by(name: params['category'])
+    if @category.nil? 
+      raise ActionController::RoutingError.new('Not Found')
+    end
+    @word = Word.get_word_by_category(@category.id)
+    if @word.nil? 
+      raise ActionController::RoutingError.new('Chưa có dữ liệu')
+    end
+    @kanjis = Kanji.get_kanjis_by_category(@category.id)
+    @percent = self.percent(@category.id)
+    all_kanjis = Kanji.where(category_id: @category.id).pluck(:text)
     tmp_word = @word.text.gsub(/[\p{Han}]/, '*')
     kanji_characters = @word.text.scan(/[\p{Han}]/)
     @kanjis = all_kanjis.shuffle[0..(9-kanji_characters.length)]+kanji_characters
@@ -15,7 +22,7 @@ class LearnsController < ApplicationController
   end
   
   def check
-    word = Word.select(:id,:text,:mean,:pronounce).find(params['word_id'])
+    word = Word.select(:id,:text,:mean,:pronounce).find_by(id:params['word_id'],category_id: params['category_id'])
     result = {'word'=>word}
     kanji_characters = word.text.scan(/[\p{Han}]/)
     answer_kanji_characters = params['answer'].scan(/[\p{Han}*]/)
@@ -34,13 +41,14 @@ class LearnsController < ApplicationController
   end
   
   def kanji
-    render :json => {'status'=>200,'info'=>Kanji.find_by(text: params['kanji'])}
+    render :json => {'status'=>200,'info'=>Kanji.find_by(text: params['kanji'],category_id: params['category_id'])}
   end 
   def questtion
-    @word = Word.get_word_by_category(1)
-    @percent = self.percent(1)
-    @kanjis = Kanji.get_kanjis_by_category(1)
-    all_kanjis = Kanji.where(category_id: 1).pluck(:text)
+    @category =Category.find(params['category_id'])
+    @word = Word.get_word_by_category(params['category_id'])
+    @percent = self.percent(params['category_id'])
+    @kanjis = Kanji.get_kanjis_by_category(params['category_id'])
+    all_kanjis = Kanji.where(category_id: params['category_id']).pluck(:text)
     tmp_word = @word.text.gsub(/[\p{Han}]/, '*')
     kanji_characters = @word.text.scan(/[\p{Han}]/)
     @kanjis = all_kanjis.shuffle[0..(9-kanji_characters.length)]+kanji_characters
