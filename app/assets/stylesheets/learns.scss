@@ -1,0 +1,297 @@
+// Place all the styles related to the learns controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body{
+    // background-color: #000 !important;
+    padding-bottom:121px;
+    width: 100%;
+    height:100vh;
+}
+body > .container{
+    height:100%;
+}
+// common
+
+.ch-grid {
+	padding: 0;
+	list-style: none;
+	display: block;
+	text-align: center;
+	width: 100%;
+}
+
+.ch-grid:after,
+.ch-item:before {
+	content: '';
+    display: table;
+}
+
+.ch-grid:after {
+	clear: both;
+}
+
+.ch-grid li {
+	width: 220px;
+	height: 220px;
+	display: inline-block;
+	margin: 8px;
+}
+
+
+// end common
+.ch-item {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background-color:#FFF;
+	position: relative;
+// 	box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+	cursor: default;
+}
+
+.ch-info-wrap{
+	position: absolute;
+	width: 216px;
+	height: 216px;
+// 	background-color:#FFF;
+	border-radius: 50%;
+	overflow: hidden;
+
+	-webkit-perspective: 800px;
+	-moz-perspective: 800px;
+	-o-perspective: 800px;
+	-ms-perspective: 800px;
+	perspective: 800px;
+
+	-webkit-transition: all 0.4s ease-in-out;
+	-moz-transition: all 0.4s ease-in-out;
+	-o-transition: all 0.4s ease-in-out;
+	-ms-transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
+
+	top: 2px;
+	left: 2px;
+	box-shadow: 
+		0 0 0 2px rgba(255,255,255,0.2), 
+		inset 0 0 3px rgba(115,114, 23, 0.8);
+
+}
+
+.ch-info{
+	position: absolute;
+	width: 216px;
+	height: 216px;
+	border-radius: 50%;
+
+	-webkit-transition: all 0.4s ease-in-out;
+	-moz-transition: all 0.4s ease-in-out;
+	-o-transition: all 0.4s ease-in-out;
+	-ms-transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
+		
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-o-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+
+}
+
+.ch-info > div {
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background-position: center center;
+
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.ch-info .ch-info-back {
+	-webkit-transform: rotate3d(0,1,0,180deg);
+	-moz-transform: rotate3d(0,1,0,180deg);
+	-o-transform: rotate3d(0,1,0,180deg);
+	-ms-transform: rotate3d(0,1,0,180deg);
+	transform: rotate3d(0,1,0,180deg);
+}
+
+.ch-item:hover .ch-info-wrap {
+	box-shadow: 
+		0 0 0 0 rgba(255,255,255,0.8), 
+		inset 0 0 3px rgba(115,114, 23, 0.8);
+}
+
+.ch-item:hover .ch-info {
+	-webkit-transform: rotate3d(0,1,0,-180deg);
+	-moz-transform: rotate3d(0,1,0,-180deg);
+	-o-transform: rotate3d(0,1,0,-180deg);
+	-ms-transform: rotate3d(0,1,0,-180deg);
+	transform: rotate3d(0,1,0,-180deg);
+}
+
+.kana,.kanji{
+    color: #FFF;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 120px;
+    height: 220px;
+    line-height: 220px;
+    text-align: center;
+}
+.meaning{
+    color: #FFF;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    height: 27px;
+    margin-top: -60px;
+}
+.ch-success{
+    background-color:#81C356;
+}
+.ch-error{
+    background-color:#b10000;
+}
+.ch-answer .kanji,.ch-answer .kana,.ch-chose .kanji,.ch-chose .kana{
+    color:#000;
+}
+.not-event{
+    pointer-events: none;
+}
+
+.ch-answer:hover .ch-info ,.ch-chose:hover .ch-info{
+	-webkit-transform:none !important;
+	-moz-transform: none !important;
+	-o-transform: none !important;
+	-ms-transform: none !important;
+	transform: none !important;
+}
+
+.ch-grid-small li {
+	width: 90px;
+	height: 90px;
+}
+
+.ch-grid-small .ch-info-wrap,.ch-grid-small .ch-info{
+	width: 86px;
+	height: 86px;
+}
+
+.ch-grid-small .kana,.ch-grid-small .kanji{
+    font-size:50px;
+    height: 86px;
+    line-height: 86px;
+}
+.ch-grid-small .index{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    color:#9d9d9d;
+}
+
+.bottom-bar{
+    // position: fixed;
+    // width: 100%;
+    // bottom: 0px;
+    // right:0px;
+}
+.content{
+    position: fixed;
+    bottom: 0px;
+    width:100%;
+    right: 0px;
+}
+
+.btn-next{
+    position: absolute;
+    right: 100px;
+    bottom: 50px
+}
+.btn-prev{
+    position: absolute;
+    left: 100px;
+    bottom: 50px
+}
+.ch-chose{
+	cursor:pointer;
+}
+.ch-help{
+	cursor:help;
+}
+.filled{
+	cursor:pointer;
+}
+
+.ch-fillable .ch-info-front{
+	margin-top:100%;
+}
+.info-word{
+	text-align: center;
+	margin-bottom: 15px;
+}
+.info-word .title{
+	font-size:40px;
+}
+.info-word .mean{
+	font-size:18px;
+}
+
+
+.collapse-meaning{
+	border-top: #e0e0e0 1px solid;
+	background-color: #FFF;
+}
+.info-kanji{
+    text-align: center;
+    padding-top:20px;
+}
+.info-kanji .text{
+	color:#000;
+	font-size: 160px;
+    line-height: 160px;
+}
+.info-kanji .mean{
+	color:#000;
+    font-size: 28px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.info-kanji .info{
+	text-align: left;
+}
+
+.btn-toggle{
+	position:absolute;
+	right:100px;
+	margin-right:20px;
+	z-index: 99;
+}
+
+dl dt{
+	text-align:left !important;
+	text-transform: capitalize;
+}
+dl dd{
+	margin-left: 110px !important;
+}
+dl{
+	font-size: large;
+}
+
+.ch-card{
+	margin-bottom:50px;
+}
+.margin-top-zezo{
+	margin-top: 0% !important;
+}
+.info-percent{
+	position: fixed;
+    top: 0px;
+    margin-left: 120px;
+    margin-top: 60px;
+}

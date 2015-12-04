@@ -2,9 +2,10 @@
 <html>
 <head>
   <title>Workspace</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    params['controller'] , media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag params['controller'] , 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -14,7 +15,6 @@
      
         <% if user_signed_in? %>
           <%= link_to "Categories",  categories_path  %>
-          <%= link_to "Tests",   tests_path %>
           <%= link_to "Goals", goals_path %>
           <%= link_to "User", users_path %>
           <%= link_to "Profile", current_user %>
