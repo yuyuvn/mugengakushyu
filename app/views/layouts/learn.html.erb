@@ -8,17 +8,11 @@
 </head>
 <body>
   <div class="container2">
-    <% if user_signed_in? %>
 	  <div class="container-shadow">
       <%= render "layouts/header" %>
     </div>
-    <% end %>
   
-    <div id="content" class="page width">
-      <%= yield %>
-    </div>
-    
-    <%= render "layouts/footer" %>
+    <%= yield %>
   </div>
 </body>
 </html>

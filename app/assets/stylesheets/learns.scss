@@ -204,6 +204,7 @@ body > .container{
     bottom: 0px;
     width:100%;
     right: 0px;
+    z-index: -1;
 }
 
 .btn-next{
@@ -291,7 +292,7 @@ dl{
 .info-percent{
 	position: fixed;
     top: 0px;
-    margin-left: 120px;
+    // margin-left: 120px;
     margin-top: 60px;
 }
 .info-percent .category{

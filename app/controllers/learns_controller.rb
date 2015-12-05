@@ -15,7 +15,7 @@ class LearnsController < ApplicationController
     all_kanjis = Kanji.where(category_id: @category.id).pluck(:text)
     tmp_word = @word.text.gsub(/[\p{Han}]/, '*')
     kanji_characters = @word.text.scan(/[\p{Han}]/)
-    @kanjis = all_kanjis.shuffle[0..(9-kanji_characters.length)]+kanji_characters
+    @kanjis = all_kanjis.shuffle[0..(7-kanji_characters.length)]+kanji_characters
     @kanjis.uniq!
     @kanjis.shuffle!
     @characters = tmp_word.split(//)
@@ -53,7 +53,7 @@ class LearnsController < ApplicationController
     all_kanjis = Kanji.where(category_id: params['category_id']).pluck(:text)
     tmp_word = @word.text.gsub(/[\p{Han}]/, '*')
     kanji_characters = @word.text.scan(/[\p{Han}]/)
-    @kanjis = all_kanjis.shuffle[0..(9-kanji_characters.length)]+kanji_characters
+    @kanjis = all_kanjis.shuffle[0..(7-kanji_characters.length)]+kanji_characters
     @kanjis.uniq!
     @kanjis.shuffle!
     @characters = tmp_word.split(//)

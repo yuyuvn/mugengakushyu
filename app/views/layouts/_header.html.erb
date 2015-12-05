@@ -1,0 +1,27 @@
+<div class="header-bg">
+	<div class="header">
+		<div class="header-inner width">
+			<div class="navigation">
+				<ul>
+					<li><%= link_to "Dashboard",  root_path  %></li>
+					<li><%= link_to "Goals", goals_path %></li>
+					<li><%= link_to "Statistics", root_path %></li>
+				</ul>
+			</div>
+
+			<div class="user-menu">
+				<div class="dropdown user-nav">
+					<%= link_to current_user, {class: "dropdown-toggle", "data-toggle" => "dropdown"}  do %>
+						<span><%= current_user.name %></span>
+						<br style="clear:both" />
+					<% end %>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+						<li><%= link_to "Your Profile", current_user %></li>
+						<li><%= link_to "Update Profile", edit_user_registration_path %></li>
+						<li><%= link_to "Logout", destroy_user_session_path, method: "delete" %></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
