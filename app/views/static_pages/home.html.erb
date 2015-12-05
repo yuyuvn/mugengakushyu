@@ -7,14 +7,14 @@
         <% percent = category.percent current_user %>
         <!--<a type="button" class="btn btn-success"><%= category.name %> <span class="badge">30.00%</span></a>   -->
          <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="col-md-3 col-sm-6 col-xs-12" title="<%= category.description %>">
           <div class="info-box">
             <div class="info-box-name progress_outer">
               <span><%= category.name %></span>
               <div style="width: <%= percent %>%"></div>
             </div>
 
-            <div class="info-box-content" title="<%= category.description %>">
+            <div class="info-box-content">
               <div><%= link_to "Learn #{category.name} (#{percent}%)", "/learns/word/#{category.name}", class: "btn btn-success" %></div>
               <div class="bold"><%= category.words.count %> words</div>
               <div class="bold"><%= category.kanjis.count %> kanjis</div>
