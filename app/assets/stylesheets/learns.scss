@@ -231,6 +231,7 @@ body > .container{
 	margin-top:100%;
 }
 .info-word{
+	color: #F4F4F4;
 	text-align: center;
 	margin-bottom: 15px;
 }
@@ -243,7 +244,7 @@ body > .container{
 
 .collapse-meaning{
 	border-top: #e0e0e0 1px solid;
-	background-color: #FFF;
+	background-color: #F4F4F4;
 }
 .info-kanji{
     text-align: center;
@@ -311,4 +312,8 @@ dl{
 }
 #indicateModal .modal-body h2{
 	margin-bottom:15px;
+}
+
+.close {
+	margin-right: 50px;
 }
