@@ -100,6 +100,7 @@ $(document).on("page:change", function() {
             if($(this).attr('data-answered')=='false'){
                 checkAnswer();
             }else{
+                $('#indicateModal').modal("show");
                 $.ajax({
                        url:'/learns/questtion',
                        type: 'POST',
@@ -107,6 +108,7 @@ $(document).on("page:change", function() {
                        data: {category_id:$('.info-word').attr('data-category-id')},
                        success: function(data){
                          if(data.status==200){
+                             $('#indicateModal').modal("hide");
                              $( ".content" ).replaceWith(data.html);
                              $('.btn-prev').removeClass('hidden');
                              $('.btn-prev').attr('data-prev',historys.length-1);

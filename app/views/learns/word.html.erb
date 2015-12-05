@@ -1,5 +1,5 @@
 <!--<%= debug params %>-->
-<!--<div class="info-percent">
+<div class="info-percent">
     <span class="link">
         <%= link_to "Trang chủ", :controller => :static_pages, :action => :home %>
     </span>
@@ -7,7 +7,7 @@
         <%= @category.name %>
     </span>
     <span class="number"><%= @percent %></span><span class="text">% hoàn thành</span>
-</div>-->
+</div>
 <div class="content">
     <div class="info-word" data-id="<%= @word.id %>" data-category-id="<%= @category.id %>">
         <div class="title">
@@ -89,4 +89,19 @@
         <button type="button" class="btn btn-default btn-next" data-answered='false'>Tiếp tục</button>
     </div>
     
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="indicateModal" role="dialog">
+	<div class="modal-dialog modal-sm">
+	  <div class="modal-content">
+	    <div class="modal-body">
+		<h2>Yêu cầu dữ liệu...</h2>
+	      <div class="progress">
+		    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+		    </div>
+		  </div>
+	    </div>
+	  </div>
+	</div>
 </div>
