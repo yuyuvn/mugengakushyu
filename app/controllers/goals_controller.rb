@@ -12,9 +12,9 @@ class GoalsController < ApplicationController
   # GET /goals/1.json
   def show
     @goal_data = []
-    dcount = count = current_user.test.learned.where("results.created_at < ?",  @goal.created_at).count
-    current = current_user.test.learned.where("results.created_at >= ?",  @goal.created_at)
-      .group_by_day("results.created_at").count.each_with_object({}){|(k,v),o| o[k.to_date]= count += v}
+    dcount = count = current_user.results.learned.where("results.created_at < ?",  @goal.created_at).count
+    current = current_user.results.learned.where("results.created_at >= ?",  @goal.created_at)
+      .group_by_day(:created_at).count.each_with_object({}){|(k,v),o| o[k.to_date]= count += v}
     avg = (@goal.goal / (@goal.deadline.to_date - @goal.created_at.to_date + 1)).to_f
     target = {}
     count = dcount
