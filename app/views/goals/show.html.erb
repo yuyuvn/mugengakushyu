@@ -17,7 +17,6 @@ Day left: <%= @goal.day_left %><br>
 You have to learn about <%= @goal.word_average %> words each day to complete your goal<br>
 #<br>
 
-<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 <%= line_chart @goal_data, library: {curveType: "none", pointSize: 0} %>
 
 <%= link_to 'Edit', edit_goal_path(@goal) %> |
