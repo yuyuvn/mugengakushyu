@@ -19,6 +19,8 @@ class LearnsController < ApplicationController
     @kanjis.uniq!
     @kanjis.shuffle!
     @characters = tmp_word.split(//)
+    
+    render :layout => 'learn'
   end
   
   def check

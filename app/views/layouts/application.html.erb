@@ -1,31 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Workspace</title>
+  <title><%= yield :title %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="container">
-    <br>
-    <div class="pull-right">
-     
-        <% if user_signed_in? %>
-          <%= link_to "Categories",  categories_path  %>
-          <%= link_to "Goals", goals_path %>
-          <%= link_to "User", users_path %>
-          <%= link_to "Profile", current_user %>
-          
-          <%= link_to "Edit", edit_user_registration_path %>
-          <%= link_to "Logout", destroy_user_session_path, method: "delete" %>
-      <% else %>
-        
-      <% end %>
+  <div class="container2">
+	  <div class="container-shadow">
+      <%= render "layouts/header" %>
     </div>
-    <hr>
   
-    <%= yield %>
+    <div id="content" class="page width">
+      <%= yield %>
+    </div>
+    
+    <%= render "layouts/footer" %>
   </div>
 </body>
 </html>
