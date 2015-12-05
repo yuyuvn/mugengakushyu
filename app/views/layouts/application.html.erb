@@ -10,6 +10,12 @@
       <%= render "layouts/header" %>
     </div>
     <% end %>
+    
+    <div class="container">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type == "notice" ? :success : message_type %>" style="margin-top: 30px" ><button type="button floatr" class="close" data-dismiss="alert">&times;</button> <%= message %></div>
+      <% end %>
+    </div>
   
     <div class="title-bar description width no-banner">
       <h3><%= yield :title %></h3>

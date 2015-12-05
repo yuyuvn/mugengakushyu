@@ -2,9 +2,9 @@
 
 <div class="row">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-
   <div class="col-md-6">
+    <%= devise_error_messages! %>
+    
     <div class="form-group">
       <%= f.label :name %><br />
       <%= f.text_field :name %>
@@ -43,7 +43,7 @@
     </div>
   
     <div class="actions">
-      <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger floatr" %>
+      <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger floatr" %>
       <%= f.submit "Update" ,class:"btn btn-primary" %>
     </div>
   </div>

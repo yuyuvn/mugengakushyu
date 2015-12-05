@@ -8,6 +8,10 @@
 	  <div class="container-shadow">
       <%= render "layouts/header" %>
     </div>
+    
+    <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>"><button type="button floatr" class="close" data-dismiss="alert">&times;</button> <%= message %></div>
+    <% end %>
   
     <%= yield %>
   </div>
