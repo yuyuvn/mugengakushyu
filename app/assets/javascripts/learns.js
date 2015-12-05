@@ -94,8 +94,8 @@ $(document).on("page:change", function() {
         });
     }
     function hanldeNext(){
-        console.log(historys.length+'/'+current_position);
-        console.log(historys);
+        // console.log(historys.length+'/'+current_position);
+        // console.log(historys);
         if(current_position==0||(current_position+1)==historys.length){
             if($(this).attr('data-answered')=='false'){
                 checkAnswer();
@@ -124,12 +124,13 @@ $(document).on("page:change", function() {
         }
     }
     function hanldePrev(){
-        console.log(historys);
+        // console.log(historys);
         if(current_position==0||(current_position+1)==historys.length){
             historys.push($('.content')[0].outerHTML);
         }
         current_position = parseInt($('.btn-prev').attr('data-prev'))+1;
         $( ".content" ).replaceWith(historys[$('.btn-prev').attr('data-prev')]);
+        $('.ch-help').bind("click",hanldeHelp);
     }
     $('body').on('click','.ch-chose',hanldeChose);
     $('body').on('click','.btn-next',hanldeNext);
