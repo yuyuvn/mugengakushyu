@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= yield :title %></title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
-  <%= csrf_meta_tags %>
+  <%= render "layouts/includeheader" %>
 </head>
 <body>
   <div class="container2">
@@ -15,6 +11,11 @@
     </div>
     <% end %>
   
+    <div class="title-bar description width no-banner">
+      <h3><%= yield :title %></h3>
+			 <%= yield :title_bar %>
+		</div>
+		
     <div id="content" class="page width">
       <%= yield %>
     </div>

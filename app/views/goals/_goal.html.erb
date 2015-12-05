@@ -1,0 +1,33 @@
+<tr>
+	<td width="1%">
+		<center><span class="typo-top"><nobr><%= goal.created_at.to_date %></nobr></span><br /><span class="typo-bottom"><nobr>Created</nobr></span></center>
+	</td>
+	
+	<td style="padding-left: 10px;">
+		<%= link_to goal.title, goal, {class: "bold"} %>
+	</td>
+	
+	<td width="1%">
+		<center><span class="typo-top"><nobr><%= goal.deadline.to_date %></nobr></span><br /><span class="typo-bottom"><nobr>Deadline</nobr></span></center>
+	</td>
+
+	<td width="1%">
+		<center style="padding: 0 5px 0 10px;">
+			<span class="typo-top"><nobr><%= link_to goal.user.name, goal.user, {class: "bold"} %></nobr></span><br /><span class="typo-bottom">Created</span>
+		</center>
+	</td>
+
+	<td width="1%">
+		<center style="padding: 0 5px 0 10px;">
+			<span class="typo-top session-text <%= goal.status.parameterize.dasherize %>"><nobr><%= goal.status %><nobr></span><br />
+			<span class="typo-bottom">Goal</span>
+		</center>
+	</td>
+
+
+	<td width="1%">
+		<center style="padding: 0 5px 0 10px;">
+			<span class="typo-top"><%= goal.goal %></span><br /><span class="typo-bottom">Words</span>
+		</center>
+	</td>
+</tr>

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :results
-  has_many :goal
+  has_many :goals
 
   def learned_word
   	results.learned.count(:word_id)

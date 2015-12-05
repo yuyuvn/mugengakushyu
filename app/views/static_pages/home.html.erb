@@ -1,17 +1,23 @@
 <% if user_signed_in? %>
+  <% provide :title, "Challenge dashboard" %>
+
   <div class="container">
-    <h2 class="title">Challenge dashboard</h2>
     <div class="row">
       <% @categories.each do |category| %>
+        <% percent = category.percent current_user %>
         <!--<a type="button" class="btn btn-success"><%= category.name %> <span class="badge">30.00%</span></a>   -->
          <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
-            <span class="info-box-name bg-aqua"><%= category.name %></span>
+            <div class="info-box-name progress_outer">
+              <span><%= category.name %></span>
+              <div style="width: <%= percent %>%"></div>
+            </div>
 
-            <div class="info-box-content">
-              <a href="/learns/word/<%= category.name %>"><span class="info-box-text"><%= category.description %></span></a>
-              <span class="info-box-number"><%= category.percent %> %</span>
+            <div class="info-box-content" title="<%= category.description %>">
+              <div><%= link_to "Learn #{category.name} (#{percent}%)", "/learns/word/#{category.name}", class: "btn btn-success" %></div>
+              <div class="bold"><%= category.words.count %> words</div>
+              <div class="bold"><%= category.kanjis.count %> kanjis</div>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -22,7 +28,8 @@
     </div>
   </div>
 <% else %>
-  <h1>Wellcome to the Kanji's World</h1>
+  <% provide :title, "Wellcome to the Kanji's World" %>
+  
   <div class="center jumbotron">
     <%= link_to "Sign up now!", new_user_registration_path,class: "btn btn-lg btn-primary" %>
     <%= link_to "Sign in", new_user_session_path,class: "btn btn-lg btn-primary" %>

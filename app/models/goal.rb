@@ -12,4 +12,10 @@ class Goal < ActiveRecord::Base
   def word_average
   	day_left > 0 ? remain_word / day_left : 0
   end
+  
+  def status
+    return "In Progress" if DateTime.now.to_date <= deadline.to_date
+    return user.results.learned.where("created_at <= ?", deadline.to_date)
+      .where("created_at >= ?", created_at.to_date).count >= goal ? "Completed" : "Failed"
+  end
 end
