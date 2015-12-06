@@ -260,9 +260,9 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   require 'omniauth-facebook'
-  config.omniauth :facebook, '1020086648047407', '4d7d09862389f776ea5c71c2283da9ad', { access_type: "offline", approval_prompt: "" }
+  config.omniauth :facebook, '1020086648047407', '4d7d09862389f776ea5c71c2283da9ad', scope: 'email', info_fields: 'email, name'
   require 'omniauth-twitter'
-  config.omniauth :twitter, 'DpYEEvm7vbJUnJxQbGNxNcF5B', 't0DrBztamR43peZc8xK6fwvx89RQlP9BfzgiDBNxQH8Rou4qVl' , { access_type: "offline", approval_prompt: "" }
+  config.omniauth :twitter, 'DpYEEvm7vbJUnJxQbGNxNcF5B', 't0DrBztamR43peZc8xK6fwvx89RQlP9BfzgiDBNxQH8Rou4qVl' , scope: 'email', info_fields: 'email, name'
 
   require 'omniauth-google-oauth2'
   config.omniauth :google_oauth2, '976713474249-igemapll9h7vo0utm194gu2it0pjlm7g.apps.googleusercontent.com', '2ZyKokhI6URBC0BfTstrQsc6', { access_type: "offline", approval_prompt: "" }
