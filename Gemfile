@@ -8,12 +8,9 @@ gem 'rails', '4.2.1'
 gem 'mysql2', '~> 0.3.13'
 gem 'omniauth'
 
-gem 'omniauth-facebook', '1.4.0'
-
 gem 'oauth2'
 
 gem 'omniauth-google-oauth2'
-gem 'omniauth-twitter' 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
