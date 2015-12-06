@@ -17,7 +17,7 @@ class GoalsController < ApplicationController
     current = current_user.results.learned.where("created_at >= ?",  @goal.created_at.to_date)
       .group_by_day(:created_at).count.each_with_object({}){|(k,v),o| o[k.to_date]= count += v}
     
-    if (@goal.user_id != current_user)
+    if (@goal.user_id != current_user.id)
       udcount = ucount = @goal.user.results.learned.where("created_at < ?",  @goal.created_at.to_date).count
       user_goal = @goal.user.results.learned.where("created_at >= ?",  @goal.created_at.to_date)
         .group_by_day(:created_at).count.each_with_object({}){|(k,v),o| o[k.to_date]= ucount += v}
@@ -33,7 +33,7 @@ class GoalsController < ApplicationController
       elsif day <= Time.now.to_date
         current[day] = current[day-1.days] if current[day].nil?
       end
-      if (@goal.user_id != current_user)
+      if (@goal.user_id != current_user.id)
         if day == @goal.created_at.to_date
           user_goal[day] = udcount if user_goal[day].nil?
         elsif day <= Time.now.to_date
@@ -42,7 +42,7 @@ class GoalsController < ApplicationController
       end
     }
     @goal_data << {name: "current", data: current}
-    if (@goal.user_id != current_user)
+    if (@goal.user_id != current_user.id)
       @goal_data << {name: @goal.user.name, data: user_goal}
     end
     @goal_data << {name: "goal", data: target}
