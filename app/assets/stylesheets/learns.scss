@@ -248,7 +248,6 @@ body > .container{
 }
 .info-kanji{
     text-align: center;
-    padding-top:20px;
 }
 .info-kanji .text{
 	color:#000;
@@ -316,4 +315,12 @@ dl{
 
 .close {
 	margin-right: 50px;
+}
+
+.info-kanji .left, .info-kanji .right  {
+	padding-top: 20px;
+}
+
+.info-kanji .left {
+	border-right: 1px solid #E0E0E0;
 }
