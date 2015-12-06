@@ -6,6 +6,7 @@ class GoalsController < ApplicationController
   # GET /goals.json
   def index
     @goals = current_user.goals
+    @friend_goals = Goal.where("user_id" => current_user.friends.ids).where(private: false)
   end
 
   # GET /goals/1
@@ -15,6 +16,13 @@ class GoalsController < ApplicationController
     dcount = count = current_user.results.learned.where("created_at < ?",  @goal.created_at.to_date).count
     current = current_user.results.learned.where("created_at >= ?",  @goal.created_at.to_date)
       .group_by_day(:created_at).count.each_with_object({}){|(k,v),o| o[k.to_date]= count += v}
+    
+    if (@goal.user_id != current_user)
+      udcount = ucount = @goal.user.results.learned.where("created_at < ?",  @goal.created_at.to_date).count
+      user_goal = @goal.user.results.learned.where("created_at >= ?",  @goal.created_at.to_date)
+        .group_by_day(:created_at).count.each_with_object({}){|(k,v),o| o[k.to_date]= ucount += v}
+    end
+    
     avg = (@goal.goal / (@goal.deadline.to_date - @goal.created_at.to_date + 1)).to_f
     target = {}
     
@@ -25,8 +33,18 @@ class GoalsController < ApplicationController
       elsif day <= Time.now.to_date
         current[day] = current[day-1.days] if current[day].nil?
       end
+      if (@goal.user_id != current_user)
+        if day == @goal.created_at.to_date
+          user_goal[day] = udcount if user_goal[day].nil?
+        elsif day <= Time.now.to_date
+          user_goal[day] = user_goal[day-1.days] if user_goal[day].nil?
+        end
+      end
     }
     @goal_data << {name: "current", data: current}
+    if (@goal.user_id != current_user)
+      @goal_data << {name: @goal.user.name, data: user_goal}
+    end
     @goal_data << {name: "goal", data: target}
   end
 

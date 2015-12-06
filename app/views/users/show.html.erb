@@ -6,7 +6,7 @@
 <h3>Gender:<%= @user.gender %></h3>
 <hr>
 <% if @is_me %>
-<% @user.friends.each_with_index do |friend, i| %>
+<% @user.friendships.each_with_index do |friend, i| %>
 <% if friend.user_id == @user.id %>
 <h4> <%= "#{i+1}. #{User.find(friend.friend_id).name} - #{@user.status_with(friend.friend_id).to_s}" %></h4>
 <% else %>

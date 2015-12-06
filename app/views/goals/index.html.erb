@@ -18,3 +18,14 @@
         <% end %>
     </table>
 </div>
+
+<% if @friend_goals.count > 0 %>
+<div class="title2">
+	<h3>Friend Goals</h3>
+</div>
+<div class="element no-top-radius" style="margin-bottom: 10px;">
+    <table class="box2 zebra">
+        <%= render @friend_goals %>
+    </table>
+</div>
+<% end %>
