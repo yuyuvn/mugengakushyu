@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Wrong Kanjis</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Times</th>
+      <th>User</th>
+      <th>Kanji</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @wrong_kanjis.each do |wrong_kanji| %>
+      <tr>
+        <td><%= wrong_kanji.times %></td>
+        <td><%= wrong_kanji.user %></td>
+        <td><%= wrong_kanji.kanji %></td>
+        <td><%= link_to 'Show', wrong_kanji %></td>
+        <td><%= link_to 'Edit', edit_wrong_kanji_path(wrong_kanji) %></td>
+        <td><%= link_to 'Destroy', wrong_kanji, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Wrong kanji', new_wrong_kanji_path %>

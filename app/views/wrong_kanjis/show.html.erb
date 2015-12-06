@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Times:</strong>
+  <%= @wrong_kanji.times %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @wrong_kanji.user %>
+</p>
+
+<p>
+  <strong>Kanji:</strong>
+  <%= @wrong_kanji.kanji %>
+</p>
+
+<%= link_to 'Edit', edit_wrong_kanji_path(@wrong_kanji) %> |
+<%= link_to 'Back', wrong_kanjis_path %>

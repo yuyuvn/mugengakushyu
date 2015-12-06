@@ -1,0 +1,2 @@
+module WrongKanjisHelper
+end

@@ -35,6 +35,10 @@ class LearnsController < ApplicationController
                     'correct' => Kanji.select(:text,:mean).find_by(text: character),
                     'not_correct' => is_matched ? "" : Kanji.select(:text,:mean).find_by(text: answer_kanji_characters[index])
                   })
+      unless is_matched
+        wkanji = WrongKanji.find_or_create_by({user: current_user, kanji: character})
+        wkanji.update_attributes(times: wkanji.times + 1)
+      end
     end
     result['matchs'] = matchs
     Result.create(:word_id => word.id,:user_id => current_user.id,:correct => (word.text.eql? params['answer']) )

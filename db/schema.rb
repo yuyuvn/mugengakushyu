@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151205160308) do
+ActiveRecord::Schema.define(version: 20151206143310) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -107,9 +107,21 @@ ActiveRecord::Schema.define(version: 20151205160308) do
 
   add_index "words", ["category_id"], name: "index_words_on_category_id", using: :btree
 
+  create_table "wrong_kanjis", force: :cascade do |t|
+    t.integer  "times",      limit: 4,   default: 0
+    t.integer  "user_id",    limit: 4
+    t.string   "kanji",      limit: 255
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "wrong_kanjis", ["kanji"], name: "index_wrong_kanjis_on_kanji", using: :btree
+  add_index "wrong_kanjis", ["user_id"], name: "index_wrong_kanjis_on_user_id", using: :btree
+
   add_foreign_key "goals", "users"
   add_foreign_key "kanjis", "categories"
   add_foreign_key "results", "users"
   add_foreign_key "results", "words"
   add_foreign_key "words", "categories"
+  add_foreign_key "wrong_kanjis", "users"
 end

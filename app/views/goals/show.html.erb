@@ -5,7 +5,7 @@
 		<h3>Graph</h3>
 	</div>
 	<div class="element no-top-radius" style="margin-bottom: 10px">
-    <%= line_chart @goal_data, library: {curveType: "none", pointSize: 0} %>
+    <%= line_chart @goal_data, library: {plotOptions: {series: {marker: {enabled: false}}}} %>
   </div>
 </div>
 

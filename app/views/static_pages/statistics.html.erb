@@ -1,0 +1,164 @@
+<% provide :title, "Statistics" %>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="element">
+            <div class="box2">
+                <% if @learned_words.count > 0 %>
+                    <%= pie_chart @learned_words, height: "150px", library: {
+                        plotOptions: {
+                            pie: {
+                                allowPointSelect: true,
+                                cursor: 'pointer',
+                                dataLabels: {enabled: false},
+                                innerSize: '70%',
+                                showInLegend: true,
+                                states: {hover: {halo: {size: 0}}}
+                            }
+                        },
+                        legend: {
+                            align: "right",
+                            verticalAlign: "middle"
+                        },
+                        title: {
+                            text: @learned_words.values.inject(0, :+).to_s,
+                            x: -40,
+                            y: 4,
+                            style: {fontSize: "30px"},
+                            verticalAlign: 'middle',
+                            textAlign: 'center',
+                            floating: true
+                        },
+                        subtitle: {
+                            text: 'TIMES',
+                            x: -40,
+                            y: 18,
+                            verticalAlign: 'middle',
+                            textAlign: 'center',
+                            floating: true
+                        }
+                    } %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="element">
+            <div class="box2">
+                <%= line_chart @learned_monthly_data, height: "150px", library: {
+                        legend: {enabled: false},
+                        plotOptions: {series: {marker: {enabled: false}}},
+                        title: {text: 'Monthly activity'}
+                } %>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="element">
+            <div class="box2">
+                <% if @learned_kanji.count > 0 %>
+                    <%= pie_chart @learned_kanji, height: "150px", library: {
+                        colors: ['#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4'],
+                        plotOptions: {
+                            pie: {
+                                allowPointSelect: true,
+                                cursor: 'pointer',
+                                dataLabels: {enabled: false},
+                                innerSize: '70%',
+                                showInLegend: true,
+                                states: {hover: {halo: {size: 0}}}
+                            }
+                        },
+                        legend: {
+                            align: "right",
+                            verticalAlign: "middle"
+                        },
+                        title: {
+                            text: @learned_kanji.values.inject(0, :+).to_s,
+                            x: -40,
+                            y: 4,
+                            style: {fontSize: "30px"},
+                            verticalAlign: 'middle',
+                            textAlign: 'center',
+                            floating: true
+                        },
+                        subtitle: {
+                            text: 'WORDS',
+                            x: -40,
+                            y: 18,
+                            verticalAlign: 'middle',
+                            textAlign: 'center',
+                            floating: true
+                        }
+                    } %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="margin-top: 10px;">
+	<div class="title2">
+		<h3>Progression</h3>
+	</div>
+	<div class="element no-top-radius">
+		<div class="box2" style="padding: 10px;">
+			<%= area_chart @learned_data %>
+		</div>
+	</div>
+</div>
+
+<div class="row" style="margin-top: 10px;">
+    <div class="col-md-6">
+        <div class="title2">
+    		<h3>Most wrongly words</h3>
+    	</div>
+    	<div class="element no-top-radius">
+    		<table class="box2 zebra">
+    			<% @wrong_words.each do |word| %>
+    			    <tr>
+                        <td style="padding-left: 10px;">
+                            <span class="bold"><%= word.text %></span>
+                        </td>
+                        <td width="1%" style="padding-right: 10px">
+                            <center><span class="typo-top session-text failed"><%= word.times %></span><br />
+                            <span class="typo-bottom">Times</span></center>
+                        </td>
+                    </tr>
+    			<% end %>
+    			<% if @wrong_words.length == 0 %>
+                    <tr>
+                        <td>There are no word</td>
+                    </tr>
+                <% end %>
+    		</table>
+    	</div>
+    </div>
+    <div class="col-md-6">
+        <div class="title2">
+    		<h3>Most wrongly kanjis</h3>
+    	</div>
+    	<div class="element no-top-radius">
+    		<table class="box2 zebra">
+    			<% @wrong_kanjis.each do |wrong_kanji| %>
+    			    <tr>
+                        <td style="padding-left: 10px;">
+                            <span class="bold"><%= wrong_kanji.kanji %></span>
+                        </td>
+                        <td width="1%" style="padding-right: 10px">
+                            <center><span class="typo-top session-text failed"><%= wrong_kanji.times %></span><br />
+                            <span class="typo-bottom">Times</span></center>
+                        </td>
+                    </tr>
+    			<% end %>
+    			<% if @wrong_kanjis.count == 0 %>
+                    <tr>
+                        <td>There are no kanji</td>
+                    </tr>
+                <% end %>
+    		</table>
+    	</div>
+    </div>
+</div>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :wrong_kanjis
   get 'friend/create'
 
   resources :goals
@@ -7,6 +8,8 @@ Rails.application.routes.draw do
   resources :words
   resources :kanjis
   root 'static_pages#home'
+  
+  get 'statistics' => "static_pages#statistics"
 
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   resources :users, only: [:show, :index]
