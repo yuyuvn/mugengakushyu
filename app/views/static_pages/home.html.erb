@@ -32,8 +32,6 @@
   <% provide :title, "Wellcome to the Kanji's World" %>
   
   <div style = "height:550px">
-    <center><%= button_to "Login with Facebook", user_omniauth_authorize_path( :facebook ),class: "btn-facebook" %><center>
-    <center><%= button_to "Login with Twitter", user_omniauth_authorize_path( :twitter ),class: "btn-twitter" %></center>
     <center><%= button_to "Login with Google", user_omniauth_authorize_path(:google_oauth2),class: "btn-google-plus"  %></center>
   </div>
 
