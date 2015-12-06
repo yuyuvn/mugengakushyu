@@ -1,3 +1,4 @@
+<%= stylesheet_link_tag "social_button.css" %>
 <% if user_signed_in? %>
   <% provide :title, "Challenge dashboard" %>
 
@@ -30,8 +31,10 @@
 <% else %>
   <% provide :title, "Wellcome to the Kanji's World" %>
   
-  <div class="center jumbotron">
-    <%= link_to "Sign up now!", new_user_registration_path,class: "btn btn-lg btn-primary" %>
-    <%= link_to "Sign in", new_user_session_path,class: "btn btn-lg btn-primary" %>
+  <div style = "height:550px">
+    <center><%= button_to "Login with Facebook", user_omniauth_authorize_path( :facebook ),class: "btn-facebook" %><center>
+    <center><%= button_to "Login with Twitter", user_omniauth_authorize_path( :twitter ),class: "btn-twitter" %></center>
+    <center><%= button_to "Login with Google", user_omniauth_authorize_path(:google_oauth2),class: "btn-google-plus"  %></center>
   </div>
+
 <% end %>
