@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20151205160308) do
+=======
+ActiveRecord::Schema.define(version: 20151205152031) do
+>>>>>>> 0acd0349e267cd9a32a01df65b3894a6f244f9ee
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -34,8 +38,10 @@ ActiveRecord::Schema.define(version: 20151205160308) do
     t.integer  "goal",       limit: 4
     t.datetime "deadline"
     t.integer  "user_id",    limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "title",      limit: 255
+    t.boolean  "private",    limit: 1
   end
 
   add_index "goals", ["user_id"], name: "index_goals_on_user_id", using: :btree

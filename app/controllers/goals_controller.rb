@@ -5,24 +5,21 @@ class GoalsController < ApplicationController
   # GET /goals
   # GET /goals.json
   def index
-    @goals = current_user.goal
+    @goals = current_user.goals
   end
 
   # GET /goals/1
   # GET /goals/1.json
   def show
     @goal_data = []
-    dcount = count = current_user.results.learned.where("results.created_at < ?",  @goal.created_at).count
-    current = current_user.results.learned.where("results.created_at >= ?",  @goal.created_at)
+    dcount = count = current_user.results.learned.where("created_at < ?",  @goal.created_at.to_date).count
+    current = current_user.results.learned.where("created_at >= ?",  @goal.created_at.to_date)
       .group_by_day(:created_at).count.each_with_object({}){|(k,v),o| o[k.to_date]= count += v}
     avg = (@goal.goal / (@goal.deadline.to_date - @goal.created_at.to_date + 1)).to_f
     target = {}
-    count = dcount
+    
     (@goal.created_at.to_date..@goal.deadline.to_date).each {|day|
-      target[day] = count += avg
-      if count > @goal.goal or day == @goal.deadline.to_date
-        target[day] = @goal.goal
-      end
+      target[day] = (avg*(day - @goal.created_at.to_date + 1)).round(2)
       if day == @goal.created_at.to_date
         current[day] = dcount if current[day].nil?
       elsif day <= Time.now.to_date
@@ -89,6 +86,6 @@ class GoalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def goal_params
-      params.require(:goal).permit(:goal, :deadline, :user_id)
+      params.require(:goal).permit(:goal, :deadline, :user_id, :title, :private)
     end
 end

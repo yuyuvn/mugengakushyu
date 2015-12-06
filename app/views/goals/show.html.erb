@@ -1,23 +1,36 @@
-<p id="notice"><%= notice %></p>
+<% provide :title, @goal.title %>
 
-<p>
-  <strong><%= Goal.human_attribute_name("goal") %>:</strong>
-  <%= @goal.goal %>
-</p>
+<div class="content2 large">
+  <div class="title2">
+		<h3>Graph</h3>
+	</div>
+	<div class="element no-top-radius" style="margin-bottom: 10px">
+    <%= line_chart @goal_data, library: {curveType: "none", pointSize: 0} %>
+  </div>
+</div>
 
-<p>
-  <strong>Deadline:</strong>
-  <%= @goal.deadline %>
-</p>
+<div class="sidebar small">
+  <div class="title2">
+		<h3>Statics</h3>
+	</div>
+	<div class="element no-top-radius">
+	  <div class="box" style="padding: 10px;">
+	    <div>Target words: <%= @goal.goal %></div>
+	    <div>Learned words: <%= current_user.learned_word %></div>
+	    <div>Remain words: <%= @goal.remain_word %></div>
+	    <div>Day left: <%= @goal.day_left.round(2) %></div>
+	    <div>You have to learn about <%= @goal.word_average.round(2) %> words each day to complete your goal</div>
+	  </div>
+    <% if @goal.user_id == current_user.id %>
+    	<div class="session <%= @goal.status.parameterize.dasherize%>">
+		    <span class="floatr">
+		    	<%= link_to 'Edit', edit_goal_path(@goal), class: "button2 blue" %>
+					<%= link_to 'Delete', @goal, method: :delete, data: { confirm: 'Are you sure?' }, class: "button2 red" %>
+				</span>
+				<div style="clear:both;"></div>
+			</div>
+		<% end %>
+  </div>
+</div>
 
-##############<br>
-Learned words: <%= current_user.learned_word %><br>
-Remain words: <%= @goal.remain_word %><br>
-Day left: <%= @goal.day_left %><br>
-You have to learn about <%= @goal.word_average %> words each day to complete your goal<br>
-#<br>
-
-<%= line_chart @goal_data, library: {curveType: "none", pointSize: 0} %>
-
-<%= link_to 'Edit', edit_goal_path(@goal) %> |
-<%= link_to 'Back', goals_path %>
+<br style="clear:both;" />

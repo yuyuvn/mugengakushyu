@@ -1,5 +1,7 @@
-<h3><%= @user.name %></h3>
-<h3><%= @user.email %></h3>
+<% provide :title, "#{@user.name.titleize}'s Profile" %>
+
+<h3>Name: <%= @user.name %></h3>
+<h3>Email: <%= @user.email %></h3>
 <h3>Age:<%= @user.age %></h3>
 <h3>Gender:<%= @user.gender %></h3>
 <hr>

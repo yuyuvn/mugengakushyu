@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   devise :omniauthable, :omniauth_providers => [:facebook, :twitter, :google_oauth2]       
 
   has_many :results
-  has_many :goal
+  has_many :goals
 
   def learned_word
   	results.learned.count(:word_id)

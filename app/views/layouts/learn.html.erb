@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= yield :title %></title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
-  <%= csrf_meta_tags %>
+  <%= render "layouts/includeheader" %>
 </head>
 <body>
   <div class="container2">
 	  <div class="container-shadow">
       <%= render "layouts/header" %>
+    </div>
+    
+    <div class="container">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type == "notice" ? :success : message_type %>" style="margin-top: 30px" ><button type="button floatr" class="close" data-dismiss="alert">&times;</button> <%= message %></div>
+      <% end %>
     </div>
   
     <%= yield %>

@@ -1,3 +1,4 @@
+<% provide :title, @category.name %>
 <!--<%= debug params %>-->
 <!--<div class="info-percent">
     <span class="link">
@@ -41,7 +42,7 @@
 
     <div class="collapse-meaning">
         <div id="info-kanji" class="collapse info-kanji">
-            <button class="btn btn-default btn-toggle" data-toggle="collapse" data-target="#info-kanji">Đóng</button>
+            <button class="close" data-toggle="collapse" data-target="#info-kanji">&times;</button>
             <div class="container">
                 <div class="row">
                     <div class="col-sm-4">
@@ -85,8 +86,8 @@
         	</li>
         <% end %>
         </ul>
-        <button type="button" class="btn btn-default btn-prev hidden">Quay lại</button>
-        <button type="button" class="btn btn-default btn-next" data-answered='false'>Tiếp tục</button>
+        <button type="button" class="btn btn-default btn-prev hidden">Back</button>
+        <button type="button" class="btn btn-default btn-next" data-answered='false'>Next</button>
     </div>
     
 </div>
@@ -96,7 +97,7 @@
 	<div class="modal-dialog modal-sm">
 	  <div class="modal-content">
 	    <div class="modal-body">
-		<h2>Yêu cầu dữ liệu...</h2>
+		<h2>Loading data...</h2>
 	      <div class="progress">
 		    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
 		    </div>

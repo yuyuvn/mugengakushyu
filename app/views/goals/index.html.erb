@@ -1,31 +1,20 @@
-<p id="notice"><%= notice %></p>
+<% provide :title, "Goals" %>
+<% content_for :title_bar do %>
+  <div class="navigation">
+    <%= link_to 'New Goal', new_goal_path, {class: "button2 green"} %>
+	</div>
+<% end %>
 
-<h1>Listing Goals</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Goal</th>
-      <th>Deadline</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @goals.each do |goal| %>
-      <tr>
-        <td><%= goal.goal %></td>
-        <td><%= goal.deadline %></td>
-        <td><%= goal.user.name %></td>
-        <td><%= link_to 'Show', goal %></td>
-        <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
-        <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Goal', new_goal_path %>
+<div class="title2">
+	<h3>Your Goals</h3>
+</div>
+<div class="element no-top-radius" style="margin-bottom: 10px;">
+    <table class="box2 zebra">
+        <%= render @goals %>
+        <% if @goals.count == 0 %>
+            <tr>
+                <td colspan="6">There are no goal</td>
+            </tr>
+        <% end %>
+    </table>
+</div>
