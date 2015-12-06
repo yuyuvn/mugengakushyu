@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :kanjis
   root 'static_pages#home'
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   resources :users, only: [:show, :index]
   resources :friends, only: [:create, :destroy, :update]
   scope "learns" ,:controller => :learns do
