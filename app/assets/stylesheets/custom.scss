@@ -5394,3 +5394,8 @@ div.title2.grit.yellow {
 	background-image: url(asset-path('svg/signin_dark_pressed_web.svg'));
 	color: transparent;
 }
+
+body#home:after {
+  content: url(asset-path('svg/signin_dark_focus_web.svg')) url(asset-path('svg/signin_dark_focus_web.svg')) url(asset-path('svg/signin_dark_pressed_web.svg'));
+  display: none;
+}
