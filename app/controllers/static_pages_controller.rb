@@ -15,9 +15,12 @@ class StaticPagesController < ApplicationController
     @learned_words = current_user.results.learned.joins(:category).group("categories.name").count
     @learned_kanji = current_user.results.learned.distinct.joins(:category).group("categories.name").count(:word_id)
     
-    count = 0
     data = current_user.results.learned.where("created_at >= ?", 1.month.ago).group_by_day("created_at")
-      .count.each_with_object({}){|(k,v),o| o[k.to_date]= count += v}
+      .count.each_with_object({}){|(k,v),o| o[k.to_date]=v}
+    (1.month.ago.to_date..DateTime.now.to_date).each {|day|
+      data[day] = 0 if data[day].nil?
+    }
+    
     @learned_monthly_data = [{name: "Learned", data: data}]
     
     @wrong_words = Word.joins(:results).select("COUNT(results.word_id) AS times, words.text").where("results.correct" => false)

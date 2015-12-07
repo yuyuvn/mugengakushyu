@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable
   devise :omniauthable, :omniauth_providers => [:google_oauth2]       
 
-  has_many :results
-  has_many :goals
+  has_many :results, dependent: :destroy
+  has_many :goals, dependent: :destroy
   
   has_many :be_accepted_relationships, ->{where(accepted: true)}, class_name: "Friend",
     foreign_key: "user_id", dependent: :delete_all

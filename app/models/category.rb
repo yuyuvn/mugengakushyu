@@ -1,6 +1,6 @@
 class Category < ActiveRecord::Base
-    has_many :words
-    has_many :kanjis
+    has_many :words, dependent: :destroy
+    has_many :kanjis, dependent: :destroy
     
     def percent user
         words_count = words.count
