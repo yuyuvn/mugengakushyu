@@ -14,12 +14,12 @@ class GoalsController < ApplicationController
   def show
     @goal_data = []
     dcount = count = current_user.results.learned.where("created_at < ?",  @goal.created_at.to_date).count
-    current = current_user.results.learned.where("created_at >= ?",  @goal.created_at.to_date)
+    current = current_user.results.learned.where("created_at >= ?",  @goal.created_at.to_date).where("created_at <= ?",  @goal.deadline.to_date)
       .group_by_day(:created_at).count.each_with_object({}){|(k,v),o| o[k.to_date]= count += v}
     
     if (@goal.user_id != current_user.id)
       udcount = ucount = @goal.user.results.learned.where("created_at < ?",  @goal.created_at.to_date).count
-      user_goal = @goal.user.results.learned.where("created_at >= ?",  @goal.created_at.to_date)
+      user_goal = @goal.user.results.learned.where("created_at >= ?",  @goal.created_at.to_date).where("created_at <= ?",  @goal.deadline.to_date)
         .group_by_day(:created_at).count.each_with_object({}){|(k,v),o| o[k.to_date]= ucount += v}
     end
     

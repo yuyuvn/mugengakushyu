@@ -32,6 +32,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'chartkick'
 gem 'groupdate'
 gem 'seed-fu', '~> 2.3'
+gem "ffaker"
 
 
 

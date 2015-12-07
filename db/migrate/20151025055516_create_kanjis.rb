@@ -1,7 +1,7 @@
 class CreateKanjis < ActiveRecord::Migration
   def change
     create_table :kanjis do |t|
-      t.string :text
+      t.string :text, index: true
       t.string :mean
       t.string :other_mean
       t.string :kun

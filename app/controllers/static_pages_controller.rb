@@ -5,11 +5,21 @@ class StaticPagesController < ApplicationController
   
   def statistics
     @learned_data = []
+    keys = []
     Category.all.each {|cat|
       count = 0
       current = current_user.results.learned.joins(:word).where("words.category_id" => cat.id).group_by_day("results.created_at")
         .count.each_with_object({}){|(k,v),o| o[k.to_date]= count += v}
+      keys = keys | current.keys
       @learned_data << {name: cat.name, data: current} if count > 0
+    }
+    keys = keys.sort!
+    @learned_data.each_with_index {|ldata, i|
+      keys.each_with_index {|day, index|
+        if ldata[:data][day].nil?
+          ldata[:data][day] = index == 0 ? 0 : ldata[:data][keys[index-1]]
+        end
+      }
     }
     
     @learned_words = current_user.results.learned.joins(:category).group("categories.name").count
