@@ -3,20 +3,14 @@ class LearnsController < ApplicationController
   
   def word
     @category =Category.find_by(name: params['category'])
-    if @category.nil? 
-      raise ActionController::RoutingError.new('Not Found')
-    end
-    @word = Word.get_word_by_category(@category.id)
-    if @word.nil? 
-      raise ActionController::RoutingError.new('Chưa có dữ liệu')
-    end
-    @kanjis = Kanji.get_kanjis_by_category(@category.id)
-    @percent = self.percent(@category.id)
-    all_kanjis = Kanji.where(category_id: @category.id).pluck(:text)
+    @word = @category.words.order("RAND()").limit(1).first
+    #@kanjis = Kanji.get_kanjis_by_category(@category.id)
+    #@percent = self.percent(@category.id)
+    @percent = 0
     tmp_word = @word.text.gsub(/[\p{Han}]/, '*')
     kanji_characters = @word.text.scan(/[\p{Han}]/)
-    @kanjis = all_kanjis.shuffle[0..(7-kanji_characters.length)]+kanji_characters
-    @kanjis.uniq!
+    @kanjis = @category.kanjis.where.not(text: kanji_characters).order("RAND()").limit(8-kanji_characters.count).pluck(:text)+kanji_characters
+    
     @kanjis.shuffle!
     @characters = tmp_word.split(//)
     
@@ -51,14 +45,12 @@ class LearnsController < ApplicationController
   end 
   def questtion
     @category =Category.find(params['category_id'])
-    @word = Word.get_word_by_category(params['category_id'])
-    @percent = self.percent(params['category_id'])
-    @kanjis = Kanji.get_kanjis_by_category(params['category_id'])
-    all_kanjis = Kanji.where(category_id: params['category_id']).pluck(:text)
+    @word = @category.words.order("RAND()").limit(1).first
+    #@percent = self.percent(params['category_id'])
+    @percent = 0
     tmp_word = @word.text.gsub(/[\p{Han}]/, '*')
     kanji_characters = @word.text.scan(/[\p{Han}]/)
-    @kanjis = all_kanjis.shuffle[0..(7-kanji_characters.length)]+kanji_characters
-    @kanjis.uniq!
+    @kanjis = @category.kanjis.where.not(text: kanji_characters).order("RAND()").limit(8-kanji_characters.count).pluck(:text)+kanji_characters
     @kanjis.shuffle!
     @characters = tmp_word.split(//)
     render :json => {'status'=>200,'html'=>render_to_string(:action => "word", :layout => false)}
