@@ -1,6 +1,10 @@
 class StaticPagesController < ApplicationController
   def home
-    @categories = Category.all if user_signed_in?
+    if user_signed_in?
+      @categories = Category.all
+    else
+      render :layout => 'home'
+    end
   end
   
   def statistics

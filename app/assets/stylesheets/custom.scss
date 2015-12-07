@@ -5355,7 +5355,7 @@ div.title2 > a.red:hover {
 
 
 div.title2.grit {
-	background: url('/lib/img/layout/grit.png') repeat-x 0 top;
+	background: url('//psnprofiles.com/lib/img/layout/grit.png') repeat-x 0 top;
 	color: #f6f6f6;
 	text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
 }
@@ -5365,4 +5365,32 @@ div.title2.grit.yellow {
 	border: 1px solid #b59d73;
 	color: #5d3a00;
 	text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.btn-google {
+	background-color: transparent;
+	background-image: url(asset-path('svg/signin_dark_normal_web.svg'));
+	background-size: 100%;
+	color: transparent;
+	width: 200px;
+	height: 50px;
+}
+
+.btn-google :hover {
+	background-color: transparent;
+	background-image: url(asset-path('svg/signin_dark_focus_web.svg'));
+	background-size: 100%;
+	color: transparent;
+	width: 200px;
+	height: 50px;
+}
+
+.btn-google:hover, .btn-google:focus {
+	background-image: url(asset-path('svg/signin_dark_focus_web.svg'));
+	color: transparent;
+}
+
+.btn-google:active {
+	background-image: url(asset-path('svg/signin_dark_pressed_web.svg'));
+	color: transparent;
 }
