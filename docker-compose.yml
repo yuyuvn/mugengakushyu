@@ -1,0 +1,17 @@
+version: '3'
+services:
+  db:
+    image: mysql
+    ports:
+      - "27017:27017"
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+  
+  app:
+    build: ./
+    volumes:
+      - .:/app
+    ports:
+      - 3000:3000
+    links:
+      - db
