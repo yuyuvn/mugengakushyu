@@ -18,6 +18,8 @@ default: &default
 
 development:
   <<: *default
+  username: root
+  host: 127.0.0.1
   database: c9
   
 # Warning: The database defined as "test" will be erased and
