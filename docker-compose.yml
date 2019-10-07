@@ -1,17 +1,12 @@
-version: '3'
+version: "3.7"
+
 services:
-  db:
-    image: mysql
-    ports:
-      - "27017:27017"
-    environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD=true
-  
   app:
-    build: ./
-    volumes:
-      - .:/app
+    build: .
     ports:
-      - 3000:3000
-    links:
-      - db
+      - "3000:3000"
+    volumes:
+      - ./:/app
+      - ./tmp/root/:/root # save .bash_history
+    stdin_open: true
+    tty: true
